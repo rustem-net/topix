@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Topix.Core\Topix.Core.csproj" />
+    <ProjectReference Include="..\..\src\Topix.Core\Topix.Core.csproj" />
   </ItemGroup>
 
 </Project>

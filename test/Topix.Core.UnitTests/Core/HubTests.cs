@@ -1,15 +1,12 @@
-﻿using Xunit;
-using Topix.Core.Base;
+using Xunit;
 
-namespace Topix.Core.UnitTests.HubTests
+namespace Topix.Core.UnitTests.Core
 {
     public class HubTests
     {
         [Fact]
         public void Hub_Always_AssertsTrue()
         {
-            var hub = new HubBase();
-
             Assert.True(true);
         }
     }

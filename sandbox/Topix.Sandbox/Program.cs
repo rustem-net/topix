@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Topix.Sandbox.Sample1;
 
-namespace Topix.Samples
+namespace Topix.Sandbox
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Sample1Runner.Run();
         }
     }
 }
