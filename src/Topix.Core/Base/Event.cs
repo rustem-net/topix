@@ -1,8 +1,9 @@
 ﻿using System;
+using Topix.Core.Contracts;
 
 namespace Topix.Core.Base
 {
-    public class Event
+    public class Event : IEvent
     {
         public Event()
         {

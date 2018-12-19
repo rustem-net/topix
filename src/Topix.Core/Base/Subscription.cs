@@ -1,8 +1,9 @@
 ﻿using System;
+using Topix.Core.Contracts;
 
 namespace Topix.Core.Base
 {
-    public class Subscription : IDisposable
+    public class Subscription : ISubscription
     {
         public Subscription(Delegate @delegate)
         {

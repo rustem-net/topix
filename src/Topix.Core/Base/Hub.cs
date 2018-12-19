@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using Topix.Core.Contracts;
 
 namespace Topix.Core.Base
 {
-    public class Hub
+    public class Hub : IHub
     {
-        private readonly Dictionary<Type, List<Subscription>> _subscriptionMap = new Dictionary<Type, List<Subscription>>();
+        private readonly Dictionary<Type, List<ISubscription>> _subscriptionMap = new Dictionary<Type, List<ISubscription>>();
 
         public void Publish<TEvent>(TEvent @event)
-            where TEvent : Event
+            where TEvent : IEvent
         {
             var eventType = typeof(TEvent);
-            if (_subscriptionMap.TryGetValue(eventType, out List<Subscription> subscriptions))
+            if (_subscriptionMap.TryGetValue(eventType, out List<ISubscription> subscriptions))
             {
                 foreach (var subscription in subscriptions)
                 {
@@ -30,8 +31,8 @@ namespace Topix.Core.Base
             }
         }
 
-        public Subscription Subscribe<TEvent>(Action<TEvent> subscribedAction)
-            where TEvent : Event
+        public ISubscription Subscribe<TEvent>(Action<TEvent> subscribedAction)
+            where TEvent : IEvent
         {
             if (subscribedAction == null)
             {
@@ -42,7 +43,7 @@ namespace Topix.Core.Base
             var subscription = new Subscription(subscribedAction);
             if (!_subscriptionMap.TryGetValue(eventType, out var subscriptions))
             {
-                subscriptions = new List<Subscription>();
+                subscriptions = new List<ISubscription>();
                 _subscriptionMap.Add(eventType, subscriptions);
             }
 
